@@ -27,7 +27,7 @@ export type StackProps = Partial<{
   alignItemsBaseline: boolean;
   alignItemsStretch: boolean;
 
-  alignContent: CSSProperties["alignItems"];
+  alignContent: CSSProperties["alignContent"];
   alignContentStart: boolean;
   alignContentEnd: boolean;
   alignContentCenter: boolean;
@@ -35,9 +35,9 @@ export type StackProps = Partial<{
   alignContentSpaceAround: boolean;
   alignContentStretch: boolean;
 
-  main: CSSProperties["alignItems"];
-  justify: CSSProperties["alignItems"];
-  justifyContent: CSSProperties["alignItems"];
+  main: CSSProperties["justifyContent"];
+  justify: CSSProperties["justifyContent"];
+  justifyContent: CSSProperties["justifyContent"];
   justifyContentStart: boolean;
   justifyContentEnd: boolean;
   justifyContentCenter: boolean;

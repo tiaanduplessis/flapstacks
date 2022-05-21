@@ -34,10 +34,21 @@ describe('Stack', () => {
     matchesSnapshot(<Stack column />)
   })
 
-  test('should allow for gap prop',() => {
+  test('should render with gap',() => {
     matchesSnapshot(<Stack gap='8px' />)
     matchesSnapshot(<Stack columnGap='8px'/>)
     matchesSnapshot(<Stack rowGap='8px'/>)
+  })
+
+  test('should render with justified content',() => {
+    matchesSnapshot(<Stack main="flex-start" />)
+    matchesSnapshot(<Stack justify="flex-end" />)
+    matchesSnapshot(<Stack justifyContent="center" />)
+    matchesSnapshot(<Stack justifyContentCenter />)
+    matchesSnapshot(<Stack justifyContentStart />)
+    matchesSnapshot(<Stack justifyContentEnd/>)
+    matchesSnapshot(<Stack justifyContentSpaceBetween/>)
+    matchesSnapshot(<Stack justifyContentSpaceAround/>)
   })
 
   test('should allow overriding styles', () => {

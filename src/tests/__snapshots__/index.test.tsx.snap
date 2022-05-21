@@ -196,3 +196,146 @@ exports[`Stack > should render Stack with defaults 1`] = `
   }
 />
 `;
+
+exports[`Stack > should render with gap 1`] = `
+<div
+  style={
+    {
+      "display": "flex",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "gap": "8px",
+    }
+  }
+/>
+`;
+
+exports[`Stack > should render with gap 2`] = `
+<div
+  style={
+    {
+      "columnGap": "8px",
+      "display": "flex",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+    }
+  }
+/>
+`;
+
+exports[`Stack > should render with gap 3`] = `
+<div
+  style={
+    {
+      "display": "flex",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "rowGap": "8px",
+    }
+  }
+/>
+`;
+
+exports[`Stack > should render with justified content 1`] = `
+<div
+  style={
+    {
+      "display": "flex",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "flex-start",
+    }
+  }
+/>
+`;
+
+exports[`Stack > should render with justified content 2`] = `
+<div
+  style={
+    {
+      "display": "flex",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "flex-end",
+    }
+  }
+/>
+`;
+
+exports[`Stack > should render with justified content 3`] = `
+<div
+  style={
+    {
+      "display": "flex",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "center",
+    }
+  }
+/>
+`;
+
+exports[`Stack > should render with justified content 4`] = `
+<div
+  style={
+    {
+      "display": "flex",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "center",
+    }
+  }
+/>
+`;
+
+exports[`Stack > should render with justified content 5`] = `
+<div
+  style={
+    {
+      "display": "flex",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "flex-start",
+    }
+  }
+/>
+`;
+
+exports[`Stack > should render with justified content 6`] = `
+<div
+  style={
+    {
+      "display": "flex",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "flex-end",
+    }
+  }
+/>
+`;
+
+exports[`Stack > should render with justified content 7`] = `
+<div
+  style={
+    {
+      "display": "flex",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "space-between",
+    }
+  }
+/>
+`;
+
+exports[`Stack > should render with justified content 8`] = `
+<div
+  style={
+    {
+      "display": "flex",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "space-around",
+    }
+  }
+/>
+`;
