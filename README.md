@@ -6,7 +6,7 @@
 [![package license](https://img.shields.io/npm/l/flapstacks.svg?style=flat-square)](https://npmjs.org/package/flapstacks)
 [![make a pull request](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-Flex layout primitive for React & React Native
+Flex layout primitive for React & React Native (wip)
 
 ## 📖 Table of Contents
 - [🥞 flapstacks](#-flapstacks)
@@ -26,7 +26,7 @@ This package is a tiny wrapper around the [Flexbox](https://developer.mozilla.or
 
 ### Features
 
-- Works in React and React Native
+- Works in React and React Native (wip)
 - Flexible shorthand props
 - TypeScript support with [API docs](https://paka.dev/npm/flapstacks)
 - Polymorphic component type
