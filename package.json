@@ -48,5 +48,8 @@
   },
   "peerDependencies": {
     "react": ">= 16.3"
+  },
+  "dependencies": {
+    "react-polymorphic-types": "^2.0.0"
   }
 }

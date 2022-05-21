@@ -1,8 +1,13 @@
-import React, { CSSProperties, ElementType, memo } from "react";
-import { Polymorphic } from "./types";
+import React, { CSSProperties, ElementType, memo, forwardRef, ReactNode } from "react";
+import type {
+  PolymorphicForwardRefExoticComponent,
+  PolymorphicPropsWithRef,
+  PolymorphicPropsWithoutRef
+} from "react-polymorphic-types";
 import { match, removeUndefined, when } from "./utils";
 
-export type StackProps = Partial<{
+const DEFAULT_ELEMENT = "div";
+export type StackOwnProps = Partial<{
   inline?: boolean;
 
   direction?: CSSProperties["flexDirection"];
@@ -50,9 +55,12 @@ export type StackProps = Partial<{
   onOverrideStyles?: (styles: CSSProperties) => CSSProperties;
 }>;
 
-const DEFAULT_ELEMENT = "div";
+export type StackProps<
+  T extends React.ElementType = typeof DEFAULT_ELEMENT
+> = PolymorphicPropsWithRef<StackOwnProps, T>;
 
-const getStackProps = <Element extends ElementType = typeof DEFAULT_ELEMENT>(
+
+const getStackProps = (
   {
     style,
     inline,
@@ -99,9 +107,8 @@ const getStackProps = <Element extends ElementType = typeof DEFAULT_ELEMENT>(
 
     flow,
     flexFlow,
-
     ...rest
-  }: Omit<Polymorphic<Element, StackProps>, "as" | "component">
+  }: StackOwnProps & ReactElement<any>
 ) => {
   const styles: CSSProperties = {
     ...style,
@@ -160,14 +167,21 @@ const getStackProps = <Element extends ElementType = typeof DEFAULT_ELEMENT>(
   };
 };
 
-export const Stack = memo(
-  <Element extends ElementType = typeof DEFAULT_ELEMENT>({
+export const Stack: PolymorphicForwardRefExoticComponent<
+  StackOwnProps,
+  typeof DEFAULT_ELEMENT
+> = forwardRef(function Stack<
+  T extends ElementType = typeof DEFAULT_ELEMENT
+>(
+  {
     as,
-    component,
-    ...props
-  }: Polymorphic<Element, StackProps>) => {
-    const Component = as ?? component ?? "div";
-    const newProps = getStackProps(props);
-    return <Component {...newProps} />;
-  }
-);
+    ...restProps
+  }: PolymorphicPropsWithoutRef<StackOwnProps, T>,
+  ref: React.ForwardedRef<Element>
+) {
+  const Element: React.ElementType = as || DEFAULT_ELEMENT;
+  const props = getStackProps(restProps);
+  return <Element ref={ref} {...props} />;
+});
+
+export const MemoizedStack = memo(Stack);

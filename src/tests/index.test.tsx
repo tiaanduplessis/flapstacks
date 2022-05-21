@@ -14,7 +14,6 @@ describe('Stack', () => {
 
   test('should be polymorhic component', () => {
     matchesSnapshot(<Stack as="main"/>)
-    matchesSnapshot(<Stack component="footer"/>)
   })
 
   test('should render Stack as inline', () => {
