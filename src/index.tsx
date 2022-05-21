@@ -110,7 +110,8 @@ const getStackProps = <Element extends ElementType = typeof DEFAULT_ELEMENT>(
       direction,
       flexDirection,
       when(column, "column"),
-      when(row, "row")
+      when(row, "row"),
+      'row'
     ),
     flexWrap: match(
       when(wrap, "wrap", "no-wrap"),

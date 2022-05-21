@@ -5,6 +5,7 @@
     "module": "esnext",
     "lib": ["esnext"],
     "strict": true,
+    "types": ["vitest/globals"],
     "strictNullChecks": true,
     "jsx": "react",
     "allowSyntheticDefaultImports": true
