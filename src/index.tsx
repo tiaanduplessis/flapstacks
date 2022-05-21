@@ -1,4 +1,4 @@
-import React, { CSSProperties, ElementType, memo, forwardRef, ReactNode } from "react";
+import React, { CSSProperties, ElementType, memo, forwardRef } from "react";
 import type {
   PolymorphicForwardRefExoticComponent,
   PolymorphicPropsWithRef,
@@ -108,7 +108,7 @@ const getStackProps = (
     flow,
     flexFlow,
     ...rest
-  }: StackOwnProps & ReactElement<any>
+  }: any // TODO: Fix typing
 ) => {
   const styles: CSSProperties = {
     ...style,
