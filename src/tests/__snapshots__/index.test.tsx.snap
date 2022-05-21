@@ -1,44 +1,5 @@
 // Vitest Snapshot v1
 
-exports[`Stack > should allow for gap prop 1`] = `
-<div
-  style={
-    {
-      "display": "flex",
-      "flexDirection": "row",
-      "flexWrap": "wrap",
-      "gap": "8px",
-    }
-  }
-/>
-`;
-
-exports[`Stack > should allow for gap prop 2`] = `
-<div
-  style={
-    {
-      "columnGap": "8px",
-      "display": "flex",
-      "flexDirection": "row",
-      "flexWrap": "wrap",
-    }
-  }
-/>
-`;
-
-exports[`Stack > should allow for gap prop 3`] = `
-<div
-  style={
-    {
-      "display": "flex",
-      "flexDirection": "row",
-      "flexWrap": "wrap",
-      "rowGap": "8px",
-    }
-  }
-/>
-`;
-
 exports[`Stack > should allow overriding styles 1`] = `
 <div
   style={
@@ -67,18 +28,6 @@ exports[`Stack > should allow using style prop 1`] = `
 
 exports[`Stack > should be polymorhic component 1`] = `
 <main
-  style={
-    {
-      "display": "flex",
-      "flexDirection": "row",
-      "flexWrap": "wrap",
-    }
-  }
-/>
-`;
-
-exports[`Stack > should be polymorhic component 2`] = `
-<footer
   style={
     {
       "display": "flex",
