@@ -15,6 +15,7 @@ Flex layout primitive for React & React Native (wip)
     - [Features](#features)
   - [⚙️ Install](#️-install)
   - [📖 Usage](#-usage)
+    - [Spacing](#spacing)
     - [Overridable styles](#overridable-styles)
   - [📚 API](#-api)
   - [💬 Contributing](#-contributing)
@@ -78,6 +79,45 @@ export default function App() {
   );
 }
 ```
+
+### Spacing
+
+`gap`, `rowGap`, and `columnGap` accept normal React CSS values. An explicit
+custom-property name such as `--space-sm` is shorthand for `var(--space-sm)`:
+
+```tsx
+<Stack gap="--space-sm" rowGap={8} columnGap="1rem" />
+```
+
+Use `m` for `margin` and `p` for `padding`. The full names also work. Values use
+React's `CSSProperties` types: numbers become pixels on the web, and strings use
+native CSS syntax, including one-to-four-side shorthands and CSS functions.
+Explicit custom-property shorthand works for these spacing props too:
+
+```tsx
+<Stack m={0} p="8px 16px" />
+<Stack margin="auto" padding="--space-sm" />
+<Stack gap="var(--space-sm, 8px)" m="calc(1rem + 2px)" />
+```
+
+Spacing precedence is explicit:
+
+- A defined `margin` wins over `m`; a defined `padding` wins over `p`, including
+  zero. `undefined` falls back to the alias.
+- Either spacing prop overrides the corresponding margin or padding declarations
+  in `style`, including physical sides, logical sides, and their legacy vendor
+  aliases. Each prop owns all four sides. Removing the prop restores `style`.
+- With neither spacing prop supplied, the corresponding `style` declarations
+  are preserved. Other style properties and the existing flex defaults are unchanged.
+- `onOverrideStyles` runs last and receives the resolved CSS values. It can
+  override the result, as before.
+
+Custom-property shorthand requires the `--` prefix and an unescaped name.
+Ordinary strings such as `normal`, `auto`, and `space-sm` are passed through;
+they are never guessed to be token names. Use full `var(...)` syntax for escaped
+names or fallbacks. Unsupported CSS values retain normal browser behavior.
+Responsive arrays and breakpoint objects are not supported; use CSS variables,
+stylesheets, or `onOverrideStyles` for responsive styling.
 
 ### Overridable styles
 
