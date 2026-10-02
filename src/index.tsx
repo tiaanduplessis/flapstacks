@@ -4,7 +4,13 @@ import type {
   PolymorphicPropsWithRef,
   PolymorphicPropsWithoutRef
 } from "react-polymorphic-types";
-import { match, removeUndefined, when } from "./utils";
+import {
+  match,
+  removeUndefined,
+  resolveCustomProperty,
+  when,
+  withSpacing
+} from "./utils";
 
 const DEFAULT_ELEMENT = "div";
 export type StackOwnProps = Partial<{
@@ -22,6 +28,11 @@ export type StackOwnProps = Partial<{
   gap: CSSProperties["gap"];
   rowGap: CSSProperties["rowGap"];
   columnGap: CSSProperties["columnGap"];
+
+  margin: CSSProperties["margin"];
+  m: CSSProperties["margin"];
+  padding: CSSProperties["padding"];
+  p: CSSProperties["padding"];
 
   cross: CSSProperties["alignItems"];
   align: CSSProperties["alignItems"];
@@ -55,10 +66,8 @@ export type StackOwnProps = Partial<{
   onOverrideStyles?: (styles: CSSProperties) => CSSProperties;
 }>;
 
-export type StackProps<
-  T extends React.ElementType = typeof DEFAULT_ELEMENT
-> = PolymorphicPropsWithRef<StackOwnProps, T>;
-
+export type StackProps<T extends React.ElementType = typeof DEFAULT_ELEMENT> =
+  PolymorphicPropsWithRef<StackOwnProps, T>;
 
 const getStackProps = (
   {
@@ -78,6 +87,11 @@ const getStackProps = (
     gap,
     rowGap,
     columnGap,
+
+    margin,
+    m,
+    padding,
+    p,
 
     cross,
     align,
@@ -111,23 +125,23 @@ const getStackProps = (
   }: any // TODO: Fix typing
 ) => {
   const styles: CSSProperties = {
-    ...style,
+    ...withSpacing(style, match(margin, m), match(padding, p)),
     display: inline ? "inline-flex" : "flex",
     flexDirection: match(
       direction,
       flexDirection,
       when(column, "column"),
       when(row, "row"),
-      'row'
+      "row"
     ),
     flexWrap: match(
       when(wrap, "wrap", "no-wrap"),
       when(flexWrap, "wrap", "no-wrap"),
       "wrap"
     ),
-    gap,
-    rowGap,
-    columnGap,
+    gap: resolveCustomProperty(gap),
+    rowGap: resolveCustomProperty(rowGap),
+    columnGap: resolveCustomProperty(columnGap),
     alignContent: match(
       alignContent,
       when(alignContentStart, "flex-start"),
@@ -170,13 +184,8 @@ const getStackProps = (
 export const Stack: PolymorphicForwardRefExoticComponent<
   StackOwnProps,
   typeof DEFAULT_ELEMENT
-> = forwardRef(function Stack<
-  T extends ElementType = typeof DEFAULT_ELEMENT
->(
-  {
-    as,
-    ...restProps
-  }: PolymorphicPropsWithoutRef<StackOwnProps, T>,
+> = forwardRef(function Stack<T extends ElementType = typeof DEFAULT_ELEMENT>(
+  { as, ...restProps }: PolymorphicPropsWithoutRef<StackOwnProps, T>,
   ref: React.ForwardedRef<Element>
 ) {
   const Element: React.ElementType = as || DEFAULT_ELEMENT;
